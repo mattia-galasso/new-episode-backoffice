@@ -25,9 +25,9 @@ return new class extends Migration
             $table->enum('status', $status)->default('ongoing');
             $table->enum('age_rating', $age_rating)->default('AL');
             $table->integer('season_count')->default(1);
-            $table->string('poster');
-            $table->string('banner');
-            $table->string('trailer_youtube_id', 11);
+            $table->string('poster')->nullable();
+            $table->string('banner')->nullable();
+            $table->string('trailer_youtube_id', 11)->nullable();
             $table->foreignId('production_company_id')->constrained();
 
             $table->timestamps();
