@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
+    <h2 class="fs-4 text-light my-4">
         {{ __('Dashboard') }}
     </h2>
     <div class="row justify-content-center">

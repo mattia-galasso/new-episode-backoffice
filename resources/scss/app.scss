@@ -1,1 +1,119 @@
 @import '~bootstrap/scss/bootstrap';
+
+:root {
+    --background-color:#050d16;
+    --border-color:#2c2e31;
+    --sidebar-items: #016483;
+    --sidebar-items-border: #02cff6;
+    --sidebar-text-items: #9ca3af; 
+}
+
+/* GENERAL RULES */
+body {
+    background-color: var(--background-color);
+}
+
+.global-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Side Navbar */
+.side-navbar {
+    background-color: var(--background-color);
+    width: 280px;
+    border-right: 2px solid var(--border-color);
+}
+
+.hr-color {
+    color: var(--border-color);
+    border-top: 2px solid;
+    opacity: 1;
+}
+
+.side-navbar a {
+    text-decoration: none;
+}
+
+.logo_next_episode {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.logo_next_episode > img {
+    width: 11rem;
+}
+
+.administration-logo-text {
+    margin: 0;
+    color: var(--sidebar-text-items);
+    align-self: end;
+}
+
+.sidebar-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.nav-list-items .nav-item {
+    position: relative;
+}
+
+.nav-list-items .nav-link.active {
+    background-color: var(--sidebar-items);
+    border-right: 3px solid var(--sidebar-items-border);
+}
+
+.nav-list-items .nav-link {
+    color: var(--sidebar-text-items);
+}
+
+.nav-list-items .nav-link:hover, 
+.nav-list-items .nav-link:focus {
+    background-color: var(--sidebar-items);
+    color: white;
+}
+
+.nav-list-items .nav-link.active::after,
+.nav-list-items .nav-link:hover::after, 
+.nav-list-items .nav-link:focus::after {
+    content: '\F285';
+    position: absolute;
+    translate: -50% -50%;
+    top: 50%;
+    right: .3rem;
+    font-family: "bootstrap-icons";
+    font-weight: bold;
+    font-size: .9rem;
+    color: var(--sidebar-items-border);
+    color: white;
+}
+
+.show-frontend-website > .nav-link {
+    color: var(--sidebar-text-items);
+}
+
+.show-frontend-website > .nav-link:hover,
+.show-frontend-website > .nav-link:focus {
+    color: var(--background-color);
+    background-color: var(--sidebar-text-items);
+    border: none;
+}
+
+/* Navbar */
+.middle-container {
+    width: 100%;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "\F282";
+    font-family: "bootstrap-icons";
+    border: 0;
+}
+
+/* BODY */

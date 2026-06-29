@@ -21,24 +21,8 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
-    <div id="app">
-        <div class="global-container">
-
-            {{-- SIDEBAR --}}
-            @include('partials.sidebar')
-
-            <div class="middle-container">
-                {{-- NAVBAR --}}
-                @include('partials.navbar')
-                
-                {{-- MAIN CONTENT --}}
-                <main class="">
-                    @yield('content')
-                </main>
-            </div>
-        </div>
-    </div>
+<body class="d-flex justify-content-center align-items-center py-4">
+        @yield('content')
 </body>
 
 </html>
