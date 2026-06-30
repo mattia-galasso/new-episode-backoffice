@@ -7,13 +7,13 @@
     </a>
     <ul class="nav-list-items mt-4 nav nav-pills flex-column mb-auto gap-3">
         <li class="nav-item"> 
-            <a href="/" class="nav-link active" aria-current="page">    
+            <a href="/" class="nav-link {{ Route::is('dashboard') ? 'active' : ''}}" aria-current="page">    
                 <span class="sidebar-icon pe-none me-2"><i class="bi bi-house-door"></i></span>
                 Dashboard
             </a> 
         </li>
         <li class="nav-item"> 
-            <a href="/" class="nav-link" aria-current="page">    
+            <a href="{{ route('tvseries.index') }}" class="nav-link {{ Route::is('tvseries.index') ? 'active' : ''}}" aria-current="page">    
                 <span class="sidebar-icon pe-none me-2"><i class="bi bi-film"></i></span>
                 Serie TV
             </a> 

@@ -36,15 +36,15 @@ class TvSeriesSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $newTvSeries = new TvSeries();
 
-            $newTvSeries->title = $faker->sentence(3);
+            $newTvSeries->title = $faker->sentence(2);
             $newTvSeries->description = $faker->paragraph(2);
 
-            $start = $faker->dateTimeBetween('-10 years', '-1 years');
+            $start = $faker->dateTimeBetween('-10 years', '-2 years');
             $end = $faker->dateTimeBetween($start, '+1 years');
             $newTvSeries->start_year = $start->format('Y');
-            $newTvSeries->end_year = $faker->boolean(30) ? now()->format('Y') : $end->format('Y');
+            $newTvSeries->end_year = $faker->boolean(30) ? $end->format('Y') : null;
 
-            $newTvSeries->status = $newTvSeries->end_year == now()->format('Y') ? 'ended' : 'ongoing';
+            $newTvSeries->status = $newTvSeries->end_year == null ? 'ongoing' : 'ended';
             $newTvSeries->age_rating = $faker->randomElement(['AL', 'VM6', 'VM14', 'VM18']);
             $newTvSeries->season_count = rand(1, 10);
 

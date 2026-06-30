@@ -21,7 +21,7 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
+<body data-bs-theme='dark'>
     <div id="app">
         <div class="global-container">
 
@@ -33,7 +33,7 @@
                 @include('partials.navbar')
                 
                 {{-- MAIN CONTENT --}}
-                <main class="">
+                <main class="content_container card p-3">
                     @yield('content')
                 </main>
             </div>

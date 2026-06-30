@@ -5,7 +5,10 @@
     --border-color:#2c2e31;
     --sidebar-items: #016483;
     --sidebar-items-border: #02cff6;
-    --sidebar-text-items: #9ca3af; 
+    --sidebar-text-items: #9ca3af;
+    --card-background-color: #1A1F2E;
+    --card-header-background: #252B3D;
+    --button-background-color: #00c6fc;
 }
 
 /* GENERAL RULES */
@@ -22,7 +25,9 @@ body {
 .side-navbar {
     background-color: var(--background-color);
     width: 280px;
+    height: 100vh;
     border-right: 2px solid var(--border-color);
+    position: fixed;
 }
 
 .hr-color {
@@ -117,3 +122,52 @@ body {
 }
 
 /* BODY */
+/* GENERAL RULES SECTIONS */
+.content_container {
+    background-color: var(--card-background-color);
+    margin: 24px 24px 24px 304px;
+}
+
+.section-icon {
+    padding: 0 7px 1px;
+    border: 2px solid var(--sidebar-items);
+    background-color: var(--card-header-background);
+    border-radius: .5rem;
+    font-size: 1.5rem;
+}
+
+.description-category{
+    font-size: .9rem;
+}
+
+/* TV SERIES */
+.table-container {
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+}
+
+.table-container .table {
+    background-color: transparent;
+}
+
+.table-container .table > thead {
+    background-color: var(--card-header-background);
+    
+}
+
+.table-container .table > :not(caption) > * > * {
+    padding: 0.5rem 0.9rem;
+    background-color: transparent;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.table-container .table > tbody > tr:last-child > * {
+    border-bottom: none;
+}
+
+.poster_image > img {
+    width: 3rem;
+}
+
+

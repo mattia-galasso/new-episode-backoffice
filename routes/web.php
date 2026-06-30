@@ -1,11 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\TvSeriesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
 
 Route::get('/', function () {
     return view('dashboard');
@@ -16,5 +13,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+/* Tv Series Resource Controller */
+Route::resource('tvseries', TvSeriesController::class)
+    ->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';
