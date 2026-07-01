@@ -124,6 +124,7 @@ body {
 /* BODY */
 /* GENERAL RULES SECTIONS */
 .content_container {
+    min-width: 860px;
     background-color: var(--card-background-color);
     margin: 24px 24px 24px 304px;
 }
@@ -141,8 +142,8 @@ body {
 }
 
 /* TV SERIES */
+/* INDEX */
 .table-container {
-    overflow: hidden;
     border-radius: 10px;
     border: 2px solid var(--border-color);
 }
@@ -166,8 +167,106 @@ body {
     border-bottom: none;
 }
 
-.poster_image > img {
+.poster-index > img {
     width: 3rem;
 }
 
+/* SHOW  */
+.image-banner {
+    width: 100%;
+    box-shadow: 0px 4px 7px 1px var(--border-color);
+}
 
+.show-header{
+    margin: -10rem 0 0 3rem;
+}
+
+.poster-show {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border: 2px solid var(--button-background-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px 0px var(--button-background-color);
+}
+
+.status-badge {
+    padding: 4px 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.ongoing {
+    background-color: #0b3f0b9c;
+    border: 2px solid #04dd04;
+    color: #04dd04;
+}
+
+.ended {
+    background-color: #6b0f0f9e;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+}
+
+.status-badge {
+    margin-left: 1rem;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.vertical-division {
+    width: 2px;
+    height: 2rem;
+}
+
+.info-row {
+    display: flex;
+    margin: .4rem 0;
+}
+
+.info-label {
+    width: 180px;
+    flex-shrink: 0;
+    color: darkgrey;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.info-value {
+    flex: 1;
+}
+
+.description-value {
+    max-width: 70ch;
+    line-height: 1.7;
+}
+
+.trailer-card {
+    min-height: 300px;
+}
+
+.placeholder-trailer {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+}
+
+.placeholder-trailer i {
+    font-size: 3rem;
+}
+
+.trailer-header { 
+    position: relative;
+}
+
+.youtube-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 1.1rem;
+}

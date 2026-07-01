@@ -33,7 +33,7 @@
                 @include('partials.navbar')
                 
                 {{-- MAIN CONTENT --}}
-                <main class="content_container card p-3">
+                <main>
                     @yield('content')
                 </main>
             </div>

@@ -28,7 +28,10 @@ return new class extends Migration
             $table->string('poster')->nullable();
             $table->string('banner')->nullable();
             $table->string('trailer_youtube_id', 11)->nullable();
-            $table->foreignId('production_company_id')->constrained();
+            $table->foreignId('production_company_id')
+                ->nullable()
+                ->nullOnDelete()
+                ->constrained();
 
             $table->timestamps();
         });

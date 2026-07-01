@@ -3,19 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Genre;
-use App\Models\TvSeries;
 use Illuminate\Http\Request;
 
-class TvSeriesController extends Controller
+class ProductionCompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tvseries = TvSeries::all();
-        return view('tvseries.index', compact('tvseries'));
+        //
     }
 
     /**
@@ -37,9 +34,9 @@ class TvSeriesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TvSeries $tvseries)
+    public function show(string $id)
     {
-        return view('tvseries.show', compact('tvseries'));
+        //
     }
 
     /**
