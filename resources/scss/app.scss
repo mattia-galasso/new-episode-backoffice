@@ -21,6 +21,10 @@ body {
     height: 100vh;
 }
 
+.card {
+    background-color: var(--card-background-color);
+}
+
 /* Side Navbar */
 .side-navbar {
     background-color: var(--background-color);
@@ -124,7 +128,7 @@ body {
 /* BODY */
 /* GENERAL RULES SECTIONS */
 .content_container {
-    min-width: 860px;
+    width: auto;
     background-color: var(--card-background-color);
     margin: 24px 24px 24px 304px;
 }
@@ -221,9 +225,11 @@ body {
     height: 2rem;
 }
 
+/* Description Card */
+
 .info-row {
     display: flex;
-    margin: .4rem 0;
+    margin: .5rem 0;
 }
 
 .info-label {
@@ -238,17 +244,23 @@ body {
     flex: 1;
 }
 
+.ongoing-dot {
+    color: #04dd04;
+}
+
+.ended-dot {
+    color: #ff0000;
+}
+
 .description-value {
     max-width: 70ch;
     line-height: 1.7;
 }
 
-.trailer-card {
-    min-height: 300px;
-}
+/* Trailer Card */
 
 .placeholder-trailer {
-    min-height: 200px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -269,4 +281,71 @@ body {
     top: -8px;
     right: -8px;
     font-size: 1.1rem;
+}
+
+/* Genres Card */
+.genre-pill {
+    padding:.5rem .9rem;
+    font-weight:600;
+}
+
+/* Platforms Card */
+.platform-link {
+    text-decoration: none;
+    color: initial;
+}
+
+.platform-item {
+    min-width:0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .8rem 0;
+    transition: .2s;
+}
+
+.platform-item:hover {
+    transform: translateY(-2px);
+}
+
+.platform-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.platform-name{
+    font-weight:600;
+    font-size:1rem;
+}
+
+.platform-item i {
+    margin-left: auto;
+    opacity: .75;
+}
+
+/* Cast Card */
+
+.actor-card{
+    height: 100%;
+    overflow:hidden;
+    border-radius:10px;
+    background:#111827;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.actor-card img{
+    width:100%;
+    aspect-ratio:3/4;
+    object-fit:cover;
+}
+
+.actor-name{
+    font-size:.9rem;
+    font-weight:600;
+}
+
+.actor-role{
+    font-size:.85rem;
+    color:#9ca3af;
 }
