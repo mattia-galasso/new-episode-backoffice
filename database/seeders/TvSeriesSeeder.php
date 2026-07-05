@@ -27,6 +27,8 @@ class TvSeriesSeeder extends Seeder
             "Attore non protagonista",
         ];
 
+        $languages = ['Inglese', 'Italiano', 'Spagnolo', 'Francese', 'Tedesco', 'Giapponese', 'Koreano'];
+
 
         $productionCompanies = ProductionCompany::all();
         $genres = Genre::all();
@@ -38,6 +40,8 @@ class TvSeriesSeeder extends Seeder
 
             $newTvSeries->title = $faker->sentence(2);
             $newTvSeries->description = $faker->paragraph(2);
+            $newTvSeries->original_language = $faker->randomElement($languages);
+            $newTvSeries->country = $faker->country();
 
             $start = $faker->dateTimeBetween('-10 years', '-2 years');
             $end = $faker->dateTimeBetween($start, '+1 years');

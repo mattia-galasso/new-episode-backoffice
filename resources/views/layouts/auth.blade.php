@@ -21,7 +21,7 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body class="d-flex justify-content-center align-items-center py-4">
+<body class="d-flex justify-content-center align-items-center py-4" data-bs-theme='dark'>
         @yield('content')
 </body>
 

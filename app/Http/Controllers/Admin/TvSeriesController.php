@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Genre;
+use App\Models\Platform;
 use App\Models\TvSeries;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,9 @@ class TvSeriesController extends Controller
      */
     public function create()
     {
-        //
+        $genres = Genre::all();
+        $platforms = Platform::all();
+        return view('tvseries.create', compact('genres', 'platforms'));
     }
 
     /**

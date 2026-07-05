@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
-            $table->text('description')->nullable();
+            $table->text('description');
             $table->year('start_year');
             $table->year('end_year')->nullable();
             $table->enum('status', $status)->default('ongoing');

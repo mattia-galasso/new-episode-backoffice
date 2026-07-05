@@ -3,18 +3,18 @@
 @section('title', $tvseries->title)
 
 @section('content')
-<div class="content_container card">
+<div class="content-container card">
+    {{-- HEADER --}}
     <div class="d-flex justify-content-between align-items-center m-3">
-        <a href="{{ route('tvseries.index') }}">
-            <button class="btn btn-primary m-0">
+        <a href="{{ route('tvseries.index') }}" class="btn btn-primary m-0">
                 <i class="bi bi-arrow-left me-2"></i>Serie TV
-            </button>
         </a>
         <div>
             <button class="btn btn-secondary"><i class="bi bi-pencil"></i> Modifica</button>
             <button class="btn btn-danger"><i class="bi bi-trash"></i> Elimina</button>
         </div>
     </div>
+    {{-- MAIN --}}
     <img src="{{ $tvseries->banner ? asset('storage/' . $tvseries->banner) : asset('./img/banner_no_image_available.png') }}"
         alt="{{ $tvseries->banner ? $tvseries->title : 'No Image Available' }}" class="image-banner">
     <div class="d-flex align-items-center gap-3 show-header">
@@ -68,13 +68,15 @@
                     <span class="info-value">{{ $tvseries->age_rating }}</span>
                 </div>
                 <div class="info-row">
+                    <span class="info-label">Lingua originale</span>
+                    <span class="info-value language-text">
+                        {{$tvseries->original_language ? $tvseries->original_language : 'Non indicata'}}
+                    </span>
+                </div>
+                <div class="info-row">
                     <span class="info-label">Paese di produzione</span>
                     <span class="info-value">
-                        @if (!$tvseries->productioncompany->country || !$tvseries->production_company_id)
-                        Non indicata
-                        @else
-                        {{$tvseries->productioncompany->country}}
-                        @endif
+                        {{$tvseries->country ? $tvseries->country : 'Non indicato'}}
                     </span>
                 </div>
                 <div class="info-row">

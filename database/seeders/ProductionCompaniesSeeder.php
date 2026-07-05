@@ -19,7 +19,6 @@ class ProductionCompaniesSeeder extends Seeder
             $newProductionCompany = new ProductionCompany();
 
             $newProductionCompany->name = $faker->company();
-            $newProductionCompany->country = $faker->country();
 
             $newProductionCompany->save();
         }
