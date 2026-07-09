@@ -63,7 +63,7 @@
 </div>
 
 {{-- OFFCANVAS --}}
-<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="mobileMenu">
+<div class="offcanvas offcanvas-end text-bg-dark d-sm-none" tabindex="-1" id="mobileMenu">
     <div class="offcanvas-header border-bottom border-secondary py-4">
         <div class="flex-grow-1">
             <button

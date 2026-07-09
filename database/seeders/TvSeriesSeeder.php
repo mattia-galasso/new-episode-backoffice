@@ -10,6 +10,7 @@ use App\Models\TvSeries;
 use Faker\Generator as Faker;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class TvSeriesSeeder extends Seeder
 {
@@ -38,7 +39,10 @@ class TvSeriesSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $newTvSeries = new TvSeries();
 
-            $newTvSeries->title = $faker->sentence(2);
+            $title = $faker->sentence(3);
+
+            $newTvSeries->title = $title;
+            $newTvSeries->slug = Str::slug($title);
             $newTvSeries->description = $faker->paragraph(2);
             $newTvSeries->original_language = $faker->randomElement($languages);
             $newTvSeries->country = $faker->country();

@@ -2,7 +2,7 @@
 
     {{-- POSTER --}}
     <div class="series-poster">
-        <img src="{{ $series->poster == null ? asset('img/no_image_available.png') : asset('storage/'.$series->poster) }}"
+        <img src="{{ $series->poster === null ? asset('img/no_image_available.png') : asset('storage/'.$series->poster) }}"
             alt="{{ $series->title }}">
     </div>
 
@@ -21,7 +21,7 @@
                 {{ $series->age_rating }}
             </span>
 
-            @if($series->status == 'ongoing')
+            @if($series->status === 'ongoing')
             <span class="badge index-ongoing">
                 In Produzione
             </span>
@@ -46,7 +46,7 @@
 
     {{-- ACTIONS --}}
     <div class="series-actions">
-        <a href="{{ route('tvseries.edit',$series) }}" onclick="event.stopPropagation()" class="series-btn edit-btn">
+        <a href="{{ route('tvseries.edit', $series) }}" onclick="event.stopPropagation()" class="series-btn edit-btn">
             <i class="bi bi-pencil"></i>
         </a>
         <button class="series-btn delete-btn" onclick="event.stopPropagation()">

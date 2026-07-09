@@ -6,6 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class TvSeries extends Model
 {
+    protected $fillable = [
+        'title',
+        'description',
+        'original_language',
+        'country',
+        'start_year',
+        'end_year',
+        'status',
+        'age_rating',
+        'season_count',
+        'poster',
+        'banner',
+        'trailer_youtube_id',
+        'production_company_id',
+    ];
+
     // One to Many production_companies table
     public function productionCompany()
     {
