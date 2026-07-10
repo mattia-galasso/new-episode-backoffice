@@ -956,6 +956,47 @@ body.sidebar-collapsed .sidebar-toggle button {
     display:block;
 }
 
+/* EDIT ACTORS */
+.actor-remove {
+    position: absolute;
+    top: .4rem;
+    right: .4rem;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.actor-search-photo {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--border-color);
+}
+
+.modal-content {
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: var(--border-color);
+}
+
+.modal-title {
+    color: white;
+}
+
+.modal-body {
+    color: white;
+}
+
 /* MEDIA QUERY */
 /* TABLET */
 @media (min-width: 577px) and (max-width: 991.98px) {

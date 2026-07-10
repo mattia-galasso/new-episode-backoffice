@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Actor;
+use App\Models\TvSeries;
 use Illuminate\Http\Request;
 
 class ActorController extends Controller
@@ -61,5 +63,23 @@ class ActorController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Controller per API gestione cast.
+     */
+    public function search(Request $request, TvSeries $tvseries)
+    {
+        if (!$request->filled('name')) {
+            return [];
+        }
+
+        return Actor::where('name', 'like', '%' . $request->name . '%')
+            ->orderBy('name')
+            ->get([
+                'id',
+                'name',
+                'photo',
+            ]);
     }
 }

@@ -6,8 +6,8 @@
 <div class="content-container card p-3">
     {{-- HEADER --}}
     <div class="d-flex flex-column justify-content-center align-items-start mb-4 gap-4">
-        <a href="{{route('tvseries.index')}}" class="btn btn-primary">
-            <i class="bi bi-arrow-left me-2"></i>Serie TV
+        <a href="{{route('tvseries.show', $tvseries)}}" class="btn btn-primary">
+            <i class="bi bi-arrow-left me-2"></i>{{$tvseries->title}}
         </a>
         <div
             class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 w-100">
@@ -28,9 +28,16 @@
             </div>
 
             <div class="create-actions d-flex gap-2 ms-md-auto">
+                
+                <a href="{{ route('tvseries.cast.edit', $tvseries) }}" class="btn btn-outline-info">
+                    <i class="bi bi-people me-2"></i>
+                    Gestisci Cast
+                </a>
+
                 <button type="reset" form="tvseries-form" class="btn btn-outline-secondary">
                     Annulla
                 </button>
+                
                 <button type="submit" form="tvseries-form" class="btn btn-info">
                     Salva modifiche
                 </button>
@@ -134,7 +141,8 @@
                     <div class="mb-3">
                         <label for="trailer_youtube_id" class="form-label">ID Trailer Youtube</label>
                         <input type="text" name="trailer_youtube_id" class="form-control" id="trailer_youtube_id"
-                            aria-describedby="trailer-youtube" placeholder="Es. A7OOx5-0iq8" value="{{ $tvseries->trailer_youtube_id }}">
+                            aria-describedby="trailer-youtube" placeholder="Es. A7OOx5-0iq8"
+                            value="{{ $tvseries->trailer_youtube_id }}">
                         <div class="form-text" id="trailer-youtube">Inserire solo l'ID del trailer
                             https://www.youtube.com/watch?v=[ID Trailer]</div>
                     </div>
@@ -161,7 +169,9 @@
                                 <small>Anteprima poster</small>
                             </div>
                             {{-- IMG PREVIEW --}}
-                            <img id="poster-preview" class="media-preview poster-preview {{ $tvseries->poster ? '' : 'd-none' }}" src="{{ $tvseries->poster ? asset('storage/'.$tvseries->poster) : '' }}" alt="Poster">
+                            <img id="poster-preview"
+                                class="media-preview poster-preview {{ $tvseries->poster ? '' : 'd-none' }}"
+                                src="{{ $tvseries->poster ? asset('storage/'.$tvseries->poster) : '' }}" alt="Poster">
                         </div>
                     </div>
                     {{-- BANNER --}}
@@ -175,7 +185,9 @@
                                 <small>Anteprima banner</small>
                             </div>
                             {{-- IMG PREVIEW --}}
-                            <img id="banner-preview" class="media-preview banner-preview {{ $tvseries->banner ? '' : 'd-none' }}" src="{{ $tvseries->banner ? asset('storage/'.$tvseries->banner) : '' }}" alt="Banner">
+                            <img id="banner-preview"
+                                class="media-preview banner-preview {{ $tvseries->banner ? '' : 'd-none' }}"
+                                src="{{ $tvseries->banner ? asset('storage/'.$tvseries->banner) : '' }}" alt="Banner">
                         </div>
                     </div>
                 </div>
@@ -211,7 +223,8 @@
                         @foreach ($platforms as $platform)
                         <label class="platform-checkbox">
                             <input type="checkbox" name="platforms[]" value="{{$platform->id}}"
-                                id="platform-{{$platform->id}}" class="platform-input" {{ $tvseries->platforms->contains($platform->id) ? 'checked' : '' }}>
+                                id="platform-{{$platform->id}}" class="platform-input" {{
+                                $tvseries->platforms->contains($platform->id) ? 'checked' : '' }}>
                             <div class="platform-card">
 
                                 <i class="bi bi-circle platform-icon"></i>
