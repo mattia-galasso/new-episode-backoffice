@@ -12,7 +12,9 @@
         <div>
             <a href="{{ route('tvseries.edit', $tvseries)}}" class="btn btn-secondary"><i class="bi bi-pencil"></i>
                 Modifica</a>
-            <button class="btn btn-danger"><i class="bi bi-trash"></i> Elimina</button>
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTvSeriesModal">
+                <i class="bi bi-trash" ></i> Elimina
+            </button>
         </div>
     </div>
     {{-- MAIN --}}
@@ -220,4 +222,58 @@
         </div>
     </div>
 </div>
+
+{{-- MODAL --}}
+<div class="modal fade" id="deleteTvSeriesModal" tabindex="-1" aria-labelledby="deleteTvSeriesModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteTvSeriesModalLabel">
+                    <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
+                    Elimina Serie TV
+                </h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <p>
+                    Vuoi davvero eliminare
+                    <strong>{{ $tvseries->title }}</strong>?
+                </p>
+
+                <div class="alert alert-danger mb-0">
+                    <i class="bi bi-exclamation-circle me-2"></i>
+                    La serie TV verrà eliminata definitivamente.
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+
+                    Annulla
+
+                </button>
+
+                <form method="POST" action="{{ route('tvseries.destroy', $tvseries) }}">
+
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash me-2"></i>
+                        Elimina
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

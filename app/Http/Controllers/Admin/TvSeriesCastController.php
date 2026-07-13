@@ -22,13 +22,20 @@ class TvSeriesCastController extends Controller
      */
     public function addActor(Request $request, TvSeries $tvseries)
     {
-        if (!$tvseries->actors()->where('actor_id', $request->actor_id)->exists()) {
+        if ($tvseries->actors()
+            ->where('actor_id', $request->actor_id)
+            ->exists()
+        ) {
+
+            $tvseries->actors()->updateExistingPivot($request->actor_id, [
+                'role' => $request->role,
+            ]);
+        } else {
 
             $tvseries->actors()->attach($request->actor_id, [
                 'role' => $request->role,
             ]);
         }
-
 
         return redirect()->route('tvseries.cast.edit', $tvseries);
     }

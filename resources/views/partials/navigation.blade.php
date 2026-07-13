@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ route('tvseries.index') }}" class="nav-link {{ Route::is('tvseries.index') ? 'active' : ''}}"
+        <a href="{{ route('tvseries.index') }}" class="nav-link {{ Route::is('tvseries.*') ? 'active' : ''}}"
             aria-current="page">
             <span class="sidebar-icon pe-none">
                 <i class="bi bi-film"></i>
@@ -21,7 +21,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="/" class="nav-link" aria-current="page">
+        <a href="{{ route('actors.index') }}" class="nav-link {{ Route::is('actors.*') ? 'active' : ''}}">
             <span class="sidebar-icon pe-none">
                 <i class="bi bi-people"></i>
             </span>
@@ -31,7 +31,8 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="/" class="nav-link" aria-current="page">
+        <a href="{{ route('genres.index') }}" class="nav-link {{ Route::is('genres.*') ? 'active' : ''}}"
+            aria-current="page">
             <span class="sidebar-icon pe-none">
                 <i class="bi bi-collection"></i>
             </span>

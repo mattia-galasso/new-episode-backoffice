@@ -37,6 +37,15 @@
             </div>
         </div>
     </div>
+    <div class="col-12">
+        <div class="alert alert-info d-flex align-items-center gap-3 mb-4">
+            <i class="bi bi-info-circle-fill fs-5"></i>
+            <div>
+                Il <strong>cast</strong> e le <strong>piattaforme</strong> potranno essere associati dopo la creazione
+                della serie TV.
+            </div>
+        </div>
+    </div>
     {{-- FORM --}}
     <form method="POST" id="tvseries-form" action="{{route('tvseries.store')}}" enctype="multipart/form-data">
         @csrf
@@ -131,7 +140,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
-                        <textarea name="description" id="description" rows="5" class="form-control" required placeholder="Scrivi la descrizione della serie..."></textarea>
+                        <textarea name="description" id="description" rows="5" class="form-control" required
+                            placeholder="Scrivi la descrizione della serie..."></textarea>
                     </div>
                 </div>
             </div>
@@ -172,7 +182,7 @@
             </div>
         </div>
         <div class="row g-4 align-items-stretch mt-1">
-            <div class="col-12 col-xl-6 d-flex">
+            <div class="col-12 d-flex">
                 <div class="card create-card flex-fill">
                     <h5 class="fw-bold mb-3">Generi</h5>
                     <div class="genre-grid">
@@ -189,39 +199,6 @@
                                 {{ $genre->name }}
                             </span>
 
-                        </label>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl-6 d-flex">
-                <div class="card create-card flex-fill">
-                    <h5 class="fw-bold mb-3">Piattaforme</h5>
-                    <div class="platform-grid">
-                        @foreach ($platforms as $platform)
-                        <label class="platform-checkbox">
-                            <input type="checkbox" name="platforms[]" value="{{$platform->id}}"
-                                id="platform-{{$platform->id}}" class="platform-input">
-                            <div class="platform-card">
-
-                                <i class="bi bi-circle platform-icon"></i>
-                                <i class="bi bi-check-circle-fill platform-icon-selected"></i>
-
-                                @if (str_starts_with($platform->logo_img, 'logo_'))
-                                <img class="platform-logo" src="{{asset('./img/platforms/' . $platform->logo_img)}}"
-                                    alt="{{$platform->name}}">
-                                @elseif (!$platform->logo_img)
-                                <img class="platform-logo" src="{{asset('./img/platforms/logo_notfound.png')}}"
-                                    alt="{{$platform->name}}">
-                                @else
-                                <img class="platform-logo" src="{{asset('storage/' . $platform->logo_img)}}"
-                                    alt="{{$platform->name}}">
-                                @endif
-
-                                <span class="platform-name">
-                                    {{$platform->name}}
-                                </span>
-                            </div>
                         </label>
                         @endforeach
                     </div>

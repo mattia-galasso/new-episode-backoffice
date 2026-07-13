@@ -37,7 +37,8 @@ class TvSeries extends Model
     // Many to Many platforms table
     public function platforms()
     {
-        return $this->belongsToMany(Platform::class);
+        return $this->belongsToMany(Platform::class)
+            ->withPivot('url');
     }
 
     // Many to Many actors table and role column on pivot table

@@ -5,43 +5,69 @@
 @section('content')
 <div class="content-container card p-3">
     {{-- HEADER --}}
-    <div class="d-flex flex-column justify-content-center align-items-start mb-4 gap-4">
-        <a href="{{route('tvseries.show', $tvseries)}}" class="btn btn-primary">
-            <i class="bi bi-arrow-left me-2"></i>{{$tvseries->title}}
+    <div class="edit-header mb-4">
+
+        <a href="{{ route('tvseries.show', $tvseries) }}" class="btn btn-primary edit-back-btn">
+            <i class="bi bi-arrow-left me-2"></i>
+            {{ $tvseries->title }}
         </a>
-        <div
-            class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 w-100">
 
-            <div class="d-flex align-items-center gap-2">
+        <div class="edit-header-content">
 
-                <span class="section-icon pe-none me-2">
+            <div class="edit-header-title">
+
+                <span class="section-icon pe-none">
                     <i class="bi bi-pencil-square"></i>
                 </span>
 
                 <div>
-                    <h4 class="m-0">Modifica "{{ $tvseries->title }}"</h4>
+                    <h4 class="m-0">
+                        Modifica "{{ $tvseries->title }}"
+                    </h4>
 
                     <p class="description-category m-0">
                         Aggiorna le informazioni della serie presente nel catalogo.
                     </p>
                 </div>
+
             </div>
 
-            <div class="create-actions d-flex gap-2 ms-md-auto">
-                
-                <a href="{{ route('tvseries.cast.edit', $tvseries) }}" class="btn btn-outline-info">
-                    <i class="bi bi-people me-2"></i>
-                    Gestisci Cast
-                </a>
+            <div class="create-actions">
 
-                <button type="reset" form="tvseries-form" class="btn btn-outline-secondary">
-                    Annulla
-                </button>
-                
-                <button type="submit" form="tvseries-form" class="btn btn-info">
-                    Salva modifiche
-                </button>
+                <div class="management-actions">
+
+                    <a href="{{ route('tvseries.cast.edit', $tvseries) }}" class="btn btn-outline-info">
+                        <i class="bi bi-people me-2"></i>
+                        Gestisci Cast
+                    </a>
+
+                    <a href="{{ route('tvseries.platforms.edit', $tvseries) }}" class="btn btn-outline-info">
+                        <i class="bi bi-display me-2"></i>
+                        Gestisci piattaforme
+                    </a>
+
+                </div>
+
+                <div class="action-divider"></div>
+
+                <div class="form-actions">
+
+                    <button type="reset" form="tvseries-form" class="btn btn-outline-secondary">
+                        Annulla
+                    </button>
+
+                    <button type="submit" form="tvseries-form" class="btn btn-info">
+                        Salva modifiche
+                    </button>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="alert alert-info d-flex align-items-center gap-3 mb-4">
+        <i class="bi bi-info-circle-fill fs-5"></i>
+        <div>
+            Il <strong>cast</strong> e le <strong>piattaforme</strong> vengono gestiti separatamente tramite i pulsanti
+            <strong>Gestisci Cast</strong> e <strong>Gestisci piattaforme</strong>.
         </div>
     </div>
     {{-- FORM --}}
@@ -194,7 +220,7 @@
             </div>
         </div>
         <div class="row g-4 align-items-stretch mt-1">
-            <div class="col-12 col-xl-6 d-flex">
+            <div class="col-12 d-flex">
                 <div class="card create-card flex-fill">
                     <h5 class="fw-bold mb-3">Generi</h5>
                     <div class="genre-grid">
@@ -211,40 +237,6 @@
                                 {{ $genre->name }}
                             </span>
 
-                        </label>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl-6 d-flex">
-                <div class="card create-card flex-fill">
-                    <h5 class="fw-bold mb-3">Piattaforme</h5>
-                    <div class="platform-grid">
-                        @foreach ($platforms as $platform)
-                        <label class="platform-checkbox">
-                            <input type="checkbox" name="platforms[]" value="{{$platform->id}}"
-                                id="platform-{{$platform->id}}" class="platform-input" {{
-                                $tvseries->platforms->contains($platform->id) ? 'checked' : '' }}>
-                            <div class="platform-card">
-
-                                <i class="bi bi-circle platform-icon"></i>
-                                <i class="bi bi-check-circle-fill platform-icon-selected"></i>
-
-                                @if (str_starts_with($platform->logo_img, 'logo_'))
-                                <img class="platform-logo" src="{{asset('./img/platforms/' . $platform->logo_img)}}"
-                                    alt="{{$platform->name}}">
-                                @elseif (!$platform->logo_img)
-                                <img class="platform-logo" src="{{asset('./img/platforms/logo_notfound.png')}}"
-                                    alt="{{$platform->name}}">
-                                @else
-                                <img class="platform-logo" src="{{asset('storage/' . $platform->logo_img)}}"
-                                    alt="{{$platform->name}}">
-                                @endif
-
-                                <span class="platform-name">
-                                    {{$platform->name}}
-                                </span>
-                            </div>
                         </label>
                         @endforeach
                     </div>

@@ -81,16 +81,13 @@ function handleResponsiveSidebar() {
 handleResponsiveSidebar();
 window.addEventListener('resize', handleResponsiveSidebar);
 
-/* FORM IMAGE UPLOAD PREVIEW */
+/* FORM TVSERIES IMAGE UPLOAD PREVIEW */
 const posterInput = document.getElementById("poster");
 const bannerInput = document.getElementById("banner");
 const posterPreview = document.getElementById("poster-preview");
 const bannerPreview = document.getElementById("banner-preview");
 const posterPlaceholder = document.getElementById("poster-placeholder");
 const bannerPlaceholder = document.getElementById("banner-placeholder");
-
-
-
 
 /* Aggiornare l'elemento nel DOM per mostrare l'anteprima dell'immagine */
 function updatePreview(input, preview) {
@@ -123,6 +120,24 @@ if (bannerInput && bannerPreview) {
     });
 }
 
+/* FORM ACTORS IMAGE UPLOAD PREVIEW */
+const actorInput = document.getElementById('photo')
+const actorPreview = document.getElementById('actor-preview')
+const actorPlaceholder = document.getElementById('actor-placeholder')
+
+if (actorInput && actorPreview && actorPlaceholder) {
+    actorInput.addEventListener('change', function () {
+        const file = this.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        actorPreview.src = URL.createObjectURL(file);
+        actorPreview.classList.remove('d-none');
+        actorPlaceholder.classList.add('d-none');
+    })
+}
 
 /* SEARCH SELECT TOM SELECT */
 const productionCompanySelect = document.getElementById("production_company_id");

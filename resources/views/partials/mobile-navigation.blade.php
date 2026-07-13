@@ -13,13 +13,13 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="/" class="nav-link">
+        <a href="{{ route('actors.index') }}" class="nav-link {{ Route::is('actors.*') ? 'active' : '' }}">
             <i class="bi bi-people"></i>
             <span>Attori</span>
         </a>
     </li>
     <li class="nav-item">
-        <a href="/" class="nav-link">
+        <a href="{{ route('genres.index') }}" class="nav-link {{ Route::is('genres.*') ? 'active' : '' }}">
             <i class="bi bi-collection"></i>
             <span>Generi</span>
         </a>

@@ -29,8 +29,7 @@ class TvSeriesController extends Controller
     {
         $productionCompanies = ProductionCompany::orderBy('name')->get();
         $genres = Genre::orderBy('name')->get();
-        $platforms = Platform::all();
-        return view('tvseries.create', compact('genres', 'platforms', 'productionCompanies'));
+        return view('tvseries.create', compact('genres', 'productionCompanies'));
     }
 
     /**
@@ -73,10 +72,6 @@ class TvSeriesController extends Controller
         /* GENRES */
         $newTvSeries->genres()->attach($data['genres']);
 
-        /* PLATFORMS */
-        $newTvSeries->platforms()->attach($data['platforms']);
-
-
         return redirect()->route('tvseries.show', $newTvSeries);
     }
 
@@ -95,9 +90,8 @@ class TvSeriesController extends Controller
     {
         $productionCompanies = ProductionCompany::orderBy('name')->get();
         $genres = Genre::orderBy('name')->get();
-        $platforms = Platform::all();
 
-        return view('tvseries.edit', compact('tvseries', 'productionCompanies', 'genres', 'platforms'));
+        return view('tvseries.edit', compact('tvseries', 'productionCompanies', 'genres'));
     }
 
     /**
@@ -130,16 +124,11 @@ class TvSeriesController extends Controller
 
         $tvseries->save();
 
+        /* GENRES */
         if ($request->has('genres')) {
             $tvseries->genres()->sync($data['genres']);
         } else {
             $tvseries->genres()->detach();
-        }
-
-        if ($request->has('platforms')) {
-            $tvseries->platforms()->sync($data['platforms']);
-        } else {
-            $tvseries->platforms()->detach();
         }
 
         return redirect()->route('tvseries.show', $tvseries);
@@ -150,9 +139,22 @@ class TvSeriesController extends Controller
      */
     public function destroy(TvSeries $tvseries)
     {
+        /* POSTER */
+        if ($tvseries->poster) {
+            Storage::delete($tvseries->poster);
+        }
+
+        /* BANNER */
+        if ($tvseries->banner) {
+            Storage::delete($tvseries->banner);
+        }
+
         $tvseries->genres()->detach();
         $tvseries->platforms()->detach();
+        $tvseries->actors()->detach();
+
         $tvseries->delete();
-        return redirect()->route('project.index');
+
+        return redirect()->route('tvseries.index');
     }
 }

@@ -8,6 +8,7 @@ class Platform extends Model
 {
     public function tvSeries()
     {
-        return $this->belongsToMany(TvSeries::class);
+        return $this->belongsToMany(TvSeries::class)
+            ->withPivot('url');
     }
 }

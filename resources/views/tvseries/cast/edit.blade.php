@@ -31,8 +31,14 @@
                         <strong>{{ $tvseries->title }}</strong>.
                     </p>
                 </div>
-
             </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info d-flex align-items-center gap-3 mb-4">
+        <i class="bi bi-info-circle-fill fs-5"></i>
+        <div>
+            Per modificare un attore già associato, selezionalo nuovamente e aggiorna le informazioni desiderate.
         </div>
     </div>
 
@@ -127,7 +133,8 @@
                             <div class="modal-body">
                                 <p class="mb-2">
                                     Vuoi davvero rimuovere
-                                    <strong>{{ $actor->name }}</strong> dal cast di <strong>{{ $tvseries->title }}</strong>?
+                                    <strong>{{ $actor->name }}</strong> dal cast di <strong>{{ $tvseries->title
+                                        }}</strong>?
                                 </p>
                                 <div class="alert alert-warning mb-0">
                                     <i class="bi bi-info-circle me-2"></i>
