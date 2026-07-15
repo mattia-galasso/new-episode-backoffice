@@ -42,7 +42,8 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="/" class="nav-link" aria-current="page">
+        <a href="{{ route('platforms.index') }}" class="nav-link {{ Route::is('platforms.*') ? 'active' : ''}}"
+            aria-current="page">
             <span class="sidebar-icon pe-none">
                 <i class="bi bi-laptop"></i>
             </span>
@@ -52,7 +53,8 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="/" class="nav-link" aria-current="page">
+        <a href="{{ route('production-companies.index') }}" class="nav-link {{ Route::is('production-companies.*') ? 'active' : ''}}"
+            aria-current="page">
             <span class="sidebar-icon pe-none">
                 <i class="bi bi-building"></i>
             </span>
@@ -64,7 +66,7 @@
     <hr class="hr-color mt-3 mb-0">
     <p class="m-0 ps-3 fw-bold text-secondary">CONFIGURAZIONE</p>
     <li class="nav-item">
-        <a href="/" class="nav-link" aria-current="page">
+        <a href="{{ route('users.index') }}" class="nav-link {{ Route::is('users.*') ? 'active' : ''}}" aria-current="page">
             <span class="sidebar-icon pe-none">
                 <i class="bi bi-person"></i>
             </span>

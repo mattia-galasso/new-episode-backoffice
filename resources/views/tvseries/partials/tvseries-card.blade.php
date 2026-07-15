@@ -19,6 +19,25 @@
         </div>
         @endif
 
+        @if(array_key_exists('url', get_defined_vars()))
+        <div class="series-url">
+            <span class="text-secondary">URL:</span>
+
+            @if($url)
+            <a href="{{ $url }}" target="_blank" onclick="event.stopPropagation()" class="text-decoration-none">
+
+                {{ $url }}
+
+                <i class="bi bi-box-arrow-up-right ms-1"></i>
+            </a>
+            @else
+            <span class="text-secondary">
+                URL specifico non indicato
+            </span>
+            @endif
+        </div>
+        @endif
+        
         <div class="series-meta">
             <span>
                 <i class="bi bi-collection-play"></i>

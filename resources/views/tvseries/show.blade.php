@@ -13,7 +13,7 @@
             <a href="{{ route('tvseries.edit', $tvseries)}}" class="btn btn-secondary"><i class="bi bi-pencil"></i>
                 Modifica</a>
             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTvSeriesModal">
-                <i class="bi bi-trash" ></i> Elimina
+                <i class="bi bi-trash"></i> Elimina
             </button>
         </div>
     </div>
@@ -142,9 +142,12 @@
                     </div>
                     <div class="d-flex flex-wrap gap-2">
                         @forelse ($tvseries->genres as $genre)
-                        <span class="badge rounded-pill show-genre-pill"
-                            style="border: 1px solid {{ $genre->color }}; color:{{ $genre->color }};">{{$genre->name}}
-                        </span>
+                        <a href="{{ route('genres.show', $genre) }}" class="show-genre-link">
+                            <span class="badge rounded-pill show-genre-pill"
+                                style="border: 1px solid {{ $genre->color }}; color: {{ $genre->color }};">
+                                {{ $genre->name }}
+                            </span>
+                        </a>
                         @empty
                         <p class="text-secondary mb-0">
                             Nessun genere selezionato!
@@ -161,9 +164,7 @@
                         <p class="m-0">({{$tvseries->platforms->count()}})</p>
                     </div>
                     @forelse ($tvseries->platforms as $platform)
-                    <a href="{{$platform->website ? $platform->website : ''}}" {{$platform->website ? 'target="_blank"'
-                        :
-                        ''}} class="platform-link">
+                    <a href="{{ route('platforms.show', $platform) }}" class="platform-link">
                         <div class="platform-item">
                             @if (str_starts_with($platform->logo_img, 'logo_'))
                             <img src="{{asset('./img/platforms/' . $platform->logo_img)}}" alt="{{$platform->name}}">
@@ -176,7 +177,7 @@
                             <div>
                                 <div class="platform-name">{{$platform->name}}</div>
                             </div>
-                            <i class="bi bi-box-arrow-up-right"></i>
+                            <i class="bi bi-chevron-right"></i>
                         </div>
                     </a>
                     @empty
@@ -197,19 +198,22 @@
                     <div class="row g-3">
                         @forelse ($tvseries->actors as $actor)
                         <div class="col-6 col-md-3 col-lg-2">
-                            <div class="actor-card">
-                                <img src="{{ $actor->photo ? asset('storage/'.$actor->photo) : asset('./img/actor_image_not_found.png') }}"
-                                    alt="{{ $actor->name }}">
+                            <a href="{{ route('actors.show', $actor) }}" class="text-decoration-none text-reset">
+                                <div class="actor-card">
+                                    <img src="{{ $actor->photo ? asset('storage/'.$actor->photo) : asset('./img/actor_image_not_found.png') }}"
+                                        alt="{{ $actor->name }}">
 
-                                <div class="p-2">
-                                    <div class="actor-name">
-                                        {{ $actor->name }}
-                                    </div>
-                                    <div class="actor-role">
-                                        {{ $actor->pivot->role }}
+                                    <div class="p-2">
+                                        <div class="actor-name">
+                                            {{ $actor->name }}
+                                        </div>
+
+                                        <div class="actor-role">
+                                            {{ $actor->pivot->role }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         @empty
                         <p class="text-secondary mb-0">

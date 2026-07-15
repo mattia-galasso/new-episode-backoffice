@@ -33,11 +33,13 @@
                         <a href="#"
                             class="d-flex justify-content-center align-items-center gap-2 text-decoration-none text-light"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
+                            <img src="{{asset('./img/actor_image_not_found.png')}}" alt="mdo" width="32" height="32"
                                 class="rounded-circle">
                             <div class="lh-1">
                                 <p class="m-0">{{ Auth::user()->name }}</p>
-                                <small class="m-0 text-secondary">Amministratore</small>
+                                <small class="text-secondary">
+                                    {{ Auth::user()->role === 'admin' ? 'Amministratore' : 'Utente' }}
+                                </small>
                             </div>
                             <div class="dropdown-toggle"></div>
                         </a>
@@ -70,10 +72,13 @@
                 class="btn w-100 text-start text-white p-0 border-0 bg-transparent d-flex justify-content-between align-items-center collapsed account-button"
                 type="button" data-bs-toggle="collapse" data-bs-target="#mobileAccount" aria-expanded="false">
                 <div class="d-flex align-items-center gap-2">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="{{asset('./img/actor_image_not_found.png')}}" alt="mdo" width="32" height="32"
+                        class="rounded-circle">
                     <div>
                         <h5 class="mb-0">{{ Auth::user()->name }}</h5>
-                        <small class="text-secondary">Amministratore</small>
+                        <small class="text-secondary">
+                            {{ Auth::user()->role === 'admin' ? 'Amministratore' : 'Utente' }}
+                        </small>
                     </div>
 
                     <i class="bi bi-chevron-down account-chevron"></i>

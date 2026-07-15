@@ -25,13 +25,13 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="/" class="nav-link">
+        <a href="{{ route('platforms.index') }}" class="nav-link {{ Route::is('platforms.*') ? 'active' : ''}}" aria-current="page">
             <i class="bi bi-laptop"></i>
             <span>Piattaforme</span>
         </a>
     </li>
     <li class="nav-item">
-        <a href="/" class="nav-link">
+        <a href="{{ route('production-companies.index') }}" class="nav-link {{ Route::is('production-companies.*') ? 'active' : ''}}" aria-current="page">
             <i class="bi bi-building"></i>
             <span>Case Produttrici</span>
         </a>
@@ -41,7 +41,7 @@
         CONFIGURAZIONE
     </small>
     <li class="nav-item">
-        <a href="/" class="nav-link">
+        <a href="{{ route('users.index') }}" class="nav-link {{ Route::is('users.*') ? 'active' : ''}}" aria-current="page">
             <i class="bi bi-person"></i>
             <span>Utenti</span>
         </a>

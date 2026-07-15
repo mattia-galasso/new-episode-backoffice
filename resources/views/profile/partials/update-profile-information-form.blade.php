@@ -1,77 +1,116 @@
 <section>
-    <header>
-        <h2 class="text-secondary">
-            {{ __('Profile Information') }}
-        </h2>
 
-        <p class="mt-1 text-muted">
-            {{ __("Update your account's profile information and email address.") }}
+    <header class="mb-4">
+
+        <h5 class="fw-bold mb-1">
+            Informazioni profilo
+        </h5>
+
+        <p class="description-category mb-0">
+            Aggiorna le informazioni del tuo account e il tuo indirizzo email.
         </p>
+
     </header>
 
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+    {{-- EMAIL VERIFICATION --}}
+    <form id="send-verification" method="POST" action="{{ route('verification.send') }}">
+
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
-        @csrf
-        @method('patch')
+    {{-- UPDATE PROFILE FORM --}}
+    <form method="POST" action="{{ route('profile.update') }}">
 
-        <div class="mb-2">
-            <label for="name">{{__('Name')}}</label>
-            <input class="form-control" type="text" name="name" id="name" autocomplete="name" value="{{old('name', $user->name)}}" required autofocus>
+        @csrf
+        @method('PATCH')
+
+        {{-- NAME --}}
+        <div class="mb-3">
+
+            <label for="name" class="form-label">
+                Nome
+            </label>
+
+            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                autocomplete="name" value="{{ old('name', $user->name) }}" required autofocus>
+
             @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->get('name')}}</strong>
-            </span>
+
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
             @enderror
         </div>
 
-        <div class="mb-2">
-            <label for="email">
-                {{__('Email') }}
+        {{-- EMAIL --}}
+        <div class="mb-3">
+
+            <label for="email" class="form-label">
+                Email
             </label>
 
-            <input id="email" name="email" type="email" class="form-control" value="{{ old('email', $user->email)}}" required autocomplete="username" />
+            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
+                value="{{ old('email', $user->email) }}" required autocomplete="username">
 
             @error('email')
-            <span class="alert alert-danger mt-2" role="alert">
-                <strong>{{ $errors->get('email')}}</strong>
-            </span>
+
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+
             @enderror
 
+            {{-- EMAIL VERIFICATION --}}
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-            <div>
-                <p class="text-sm mt-2 text-muted">
-                    {{ __('Your email address is unverified.') }}
 
-                    <button form="send-verification" class="btn btn-outline-dark">
-                        {{ __('Click here to re-send the verification email.') }}
-                    </button>
+            <div class="mt-3">
+
+                <p class="text-secondary mb-2">
+                    Il tuo indirizzo email non è stato verificato.
                 </p>
 
+                <button type="submit" form="send-verification" class="btn btn-outline-secondary">
+
+                    Invia nuovamente l'email di verifica
+
+                </button>
+
                 @if (session('status') === 'verification-link-sent')
-                <p class="mt-2 text-success">
-                    {{ __('A new verification link has been sent to your email address.') }}
+
+                <p class="text-success mt-2 mb-0">
+                    <i class="bi bi-check-circle me-1"></i>
+                    Un nuovo link di verifica è stato inviato al tuo indirizzo email.
                 </p>
                 @endif
             </div>
             @endif
         </div>
 
-        <div class="d-flex align-items-center gap-4">
-            <button class="btn btn-primary" type="submit">{{ __('Save') }}</button>
+        {{-- ACTIONS --}}
+        <div class="d-flex align-items-center gap-3">
+
+            <button type="submit" class="btn btn-info">
+
+                Salva modifiche
+
+            </button>
 
             @if (session('status') === 'profile-updated')
+
+            <p id="profile-status" class="text-success mb-0">
+
+                <i class="bi bi-check-circle me-1"></i>
+                Modifiche salvate
+
+            </p>
+
             <script>
-                const show = true;
-                setTimeout(() => show = false, 2000)
-                const el = document.getElementById('profile-status')
-                if (show) {
-                    el.style.display = 'block';
-                }
+                const profileStatus = document.getElementById('profile-status');
+
+                setTimeout(() => {
+                    profileStatus.style.display = 'none';
+                }, 2000);
             </script>
-            <p id='profile-status' class="fs-5 text-muted">{{ __('Saved.') }}</p>
             @endif
         </div>
     </form>

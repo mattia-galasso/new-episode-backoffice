@@ -8,140 +8,116 @@ import.meta.glob(["../img/**"]);
 import TomSelect from "tom-select";
 import "tom-select/dist/css/tom-select.css";
 
-
-
 const sidebarToggle = document.getElementById("sidebar-toggle");
 const sidebarToggleIcon = document.getElementById("sidebar-toggle-icon");
 const body = document.body;
 
+// Faccio un controllo se ci troviamo nel layout App per evitare errori di elementi inesistenti
+if (sidebarToggle && sidebarToggleIcon) {
+    
+    // Recupero lo stato della Sidebar dal LocalStorage
+    const sidebarState = localStorage.getItem("sidebar");
 
-
-// Recupero lo stato della Sidebar dal LocalStorage
-const sidebarState = localStorage.getItem("sidebar");
-
-// Apporto le modifiche se nel LocalStorage la sidebar è collassata
-if (sidebarState === "collapsed") {
-    body.classList.add("sidebar-collapsed");
-    sidebarToggleIcon.classList.replace(
-        "bi-layout-sidebar-inset",
-        "bi-layout-sidebar-inset-reverse",
-    );
-} else {
-    body.classList.remove("sidebar-collapsed");
-
-    sidebarToggleIcon.classList.replace(
-        "bi-layout-sidebar-inset-reverse",
-        "bi-layout-sidebar-inset",
-    );
-}
-
-// Se viene cliccato il Button della sidebar
-sidebarToggle.addEventListener("click", function () {
-    // Se è presente la classe la rimuovo o viceversa
-    body.classList.toggle("sidebar-collapsed");
-
-    if (body.classList.contains("sidebar-collapsed")) {
-        sidebarToggleIcon.classList.replace(
-            "bi-layout-sidebar-inset",
-            "bi-layout-sidebar-inset-reverse",
-        );
-        // Salvo il nuovo stato nel LocalStorage
-        localStorage.setItem("sidebar", "collapsed");
-    } else {
-        sidebarToggleIcon.classList.replace(
-            "bi-layout-sidebar-inset-reverse",
-            "bi-layout-sidebar-inset",
-        );
-        // Salvo il nuovo stato nel LocalStorage
-        localStorage.setItem("sidebar", "expanded");
-    }
-});
-
-function handleResponsiveSidebar() {
-
-    // MOBILE
-    if (window.innerWidth < 576) {
-        return;
-    }
-
-    // TABLET
-    if (window.innerWidth < 768) {
-        body.classList.add("sidebar-collapsed");
-        return;
-    }
-
-    // DESKTOP
+    // Apporto le modifiche se nel LocalStorage la sidebar è collassata
     if (sidebarState === "collapsed") {
         body.classList.add("sidebar-collapsed");
+        sidebarToggleIcon.classList.replace(
+            "bi-layout-sidebar-inset",
+            "bi-layout-sidebar-inset-reverse",
+        );
     } else {
         body.classList.remove("sidebar-collapsed");
+
+        sidebarToggleIcon.classList.replace(
+            "bi-layout-sidebar-inset-reverse",
+            "bi-layout-sidebar-inset",
+        );
     }
-}
 
-handleResponsiveSidebar();
-window.addEventListener('resize', handleResponsiveSidebar);
+    // Se viene cliccato il Button della sidebar
+    sidebarToggle.addEventListener("click", function () {
+        // Se è presente la classe la rimuovo o viceversa
+        body.classList.toggle("sidebar-collapsed");
 
-/* FORM TVSERIES IMAGE UPLOAD PREVIEW */
-const posterInput = document.getElementById("poster");
-const bannerInput = document.getElementById("banner");
-const posterPreview = document.getElementById("poster-preview");
-const bannerPreview = document.getElementById("banner-preview");
-const posterPlaceholder = document.getElementById("poster-placeholder");
-const bannerPlaceholder = document.getElementById("banner-placeholder");
-
-/* Aggiornare l'elemento nel DOM per mostrare l'anteprima dell'immagine */
-function updatePreview(input, preview) {
-    const file = input.files[0];
-
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-        preview.src = e.target.result;
-    };
-
-    reader.readAsDataURL(file);
-}
-
-if (posterInput && posterPreview) {
-    posterInput.addEventListener("change", () => {
-        posterPreview.classList.remove('d-none');
-        posterPlaceholder.classList.add('d-none');
-        updatePreview(posterInput, posterPreview);
+        if (body.classList.contains("sidebar-collapsed")) {
+            sidebarToggleIcon.classList.replace(
+                "bi-layout-sidebar-inset",
+                "bi-layout-sidebar-inset-reverse",
+            );
+            // Salvo il nuovo stato nel LocalStorage
+            localStorage.setItem("sidebar", "collapsed");
+        } else {
+            sidebarToggleIcon.classList.replace(
+                "bi-layout-sidebar-inset-reverse",
+                "bi-layout-sidebar-inset",
+            );
+            // Salvo il nuovo stato nel LocalStorage
+            localStorage.setItem("sidebar", "expanded");
+        }
     });
+
+    function handleResponsiveSidebar() {
+        // MOBILE
+        if (window.innerWidth < 576) {
+            return;
+        }
+
+        // TABLET
+        if (window.innerWidth < 768) {
+            body.classList.add("sidebar-collapsed");
+            return;
+        }
+
+        // DESKTOP
+        if (sidebarState === "collapsed") {
+            body.classList.add("sidebar-collapsed");
+        } else {
+            body.classList.remove("sidebar-collapsed");
+        }
+    }
+
+    handleResponsiveSidebar();
+    window.addEventListener("resize", handleResponsiveSidebar);
 }
 
-if (bannerInput && bannerPreview) {
-    bannerInput.addEventListener("change", () => {
-        bannerPreview.classList.remove('d-none');
-        bannerPlaceholder.classList.add('d-none');
-        updatePreview(bannerInput, bannerPreview);
-    });
-}
+/* FORM IMAGE UPLOAD PREVIEW */
+function setupImagePreview(inputId, previewId, placeholderId) {
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+    const placeholder = document.getElementById(placeholderId);
 
-/* FORM ACTORS IMAGE UPLOAD PREVIEW */
-const actorInput = document.getElementById('photo')
-const actorPreview = document.getElementById('actor-preview')
-const actorPlaceholder = document.getElementById('actor-placeholder')
+    if (!input || !preview || !placeholder) {
+        return;
+    }
 
-if (actorInput && actorPreview && actorPlaceholder) {
-    actorInput.addEventListener('change', function () {
+    input.addEventListener("change", function () {
         const file = this.files[0];
 
         if (!file) {
             return;
         }
 
-        actorPreview.src = URL.createObjectURL(file);
-        actorPreview.classList.remove('d-none');
-        actorPlaceholder.classList.add('d-none');
-    })
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            preview.src = e.target.result;
+            preview.classList.remove("d-none");
+            placeholder.classList.add("d-none");
+        };
+
+        reader.readAsDataURL(file);
+    });
 }
 
-/* SEARCH SELECT TOM SELECT */
-const productionCompanySelect = document.getElementById("production_company_id");
+setupImagePreview("poster", "poster-preview", "poster-placeholder");
+setupImagePreview("banner", "banner-preview", "banner-placeholder");
+setupImagePreview("photo", "actor-preview", "actor-placeholder");
+setupImagePreview("logo_img", "platform-preview", "platform-placeholder");
 
+/* SEARCH SELECT TOM SELECT */
+const productionCompanySelect = document.getElementById(
+    "production_company_id",
+);
 
 if (productionCompanySelect) {
     new TomSelect(productionCompanySelect, {
@@ -157,37 +133,32 @@ if (productionCompanySelect) {
 }
 
 /* ACTOR SEARCH SELECT TOM SELECT */
-const actorSelect = document.getElementById("actor_id")
+const actorSelect = document.getElementById("actor_id");
 
 if (actorSelect) {
-new TomSelect("#actor_id", {
+    new TomSelect("#actor_id", {
+        valueField: "id",
+        labelField: "name",
+        searchField: "name",
 
-    valueField: "id",
-    labelField: "name",
-    searchField: "name",
+        load: function (query, callback) {
+            if (!query.length) return callback();
 
-    load: function (query, callback) {
+            fetch(`/api/actors/search?name=${encodeURIComponent(query)}`)
+                .then((response) => response.json())
 
-        if (!query.length) return callback();
+                .then((json) => callback(json))
 
-        fetch(`/api/actors/search?name=${encodeURIComponent(query)}`)
+                .catch(() => callback());
+        },
 
-            .then(response => response.json())
+        render: {
+            option: function (item, escape) {
+                const photo = item.photo
+                    ? `/storage/${item.photo}`
+                    : "/img/actor_image_not_found.png";
 
-            .then(json => callback(json))
-
-            .catch(() => callback());
-    },
-
-    render: {
-
-    option: function(item, escape) {
-
-        const photo = item.photo
-            ? `/storage/${item.photo}`
-            : '/img/actor_image_not_found.png';
-
-        return `
+                return `
             <div class="d-flex align-items-center py-2 px-2">
 
                 <img
@@ -203,15 +174,14 @@ new TomSelect("#actor_id", {
 
             </div>
         `;
-    },
+            },
 
-    item: function(item, escape) {
+            item: function (item, escape) {
+                const photo = item.photo
+                    ? `/storage/${item.photo}`
+                    : "/img/actor_image_not_found.png";
 
-        const photo = item.photo
-            ? `/storage/${item.photo}`
-            : '/img/actor_image_not_found.png';
-
-        return `
+                return `
             <div class="d-flex align-items-center">
 
                 <img
@@ -227,9 +197,7 @@ new TomSelect("#actor_id", {
 
             </div>
         `;
-    }
-
-}
-
-});
+            },
+        },
+    });
 }

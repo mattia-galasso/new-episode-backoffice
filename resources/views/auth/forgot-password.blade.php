@@ -1,49 +1,73 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('title', 'Forgot Password')
 
 @section('content')
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
+<div class="card auth-card">
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+    <div class="auth-card-header">
 
-                        <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+        <h1>
+            Password dimenticata?
+        </h1>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+        <p>
+            Inserisci la tua email e ti invieremo un link per reimpostare la password.
+        </p>
 
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
+    </div>
 
-                        <div class="mb-4 row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    @if (session('status'))
+
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+
+    @endif
+
+    <form method="POST" action="{{ route('password.email') }}" class="auth-form">
+
+        @csrf
+
+        <div>
+
+            <label for="email" class="form-label">
+                Email
+            </label>
+
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Inserisci la tua email">
+
+            @error('email')
+
+            <div class="invalid-feedback">
+                {{ $message }}
             </div>
+
+            @enderror
+
         </div>
+
+        <button type="submit" class="btn btn-info auth-submit">
+
+            Invia link di reimpostazione
+
+        </button>
+    </form>
+
+    <div class="auth-footer">
+
+        <span>
+            Ricordi la password?
+        </span>
+
+        <a href="{{ route('login') }}" class="auth-link">
+
+            Torna al login
+
+        </a>
     </div>
 </div>
+
 @endsection
