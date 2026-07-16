@@ -1,0 +1,160 @@
+.side-navbar {
+    background-color: var(--background-color);
+    width: var(--sidebar-width);
+    height: 100vh;
+    border-right: 2px solid var(--border-color);
+    position: fixed;
+    padding: 1rem;
+    transition:
+        width 0.25s,
+        padding 0.25s;
+}
+
+body.sidebar-collapsed {
+    --sidebar-width: 72px;
+}
+
+body.sidebar-collapsed .side-navbar {
+    padding: 1rem 0.75rem;
+}
+
+body.sidebar-collapsed .side-navbar .sidebar-text,
+body.sidebar-collapsed .side-navbar .nav-list-items p {
+    display: none;
+}
+
+body.sidebar-collapsed .side-navbar .nav-link {
+    padding-inline: 0;
+}
+
+
+
+.side-navbar a {
+    text-decoration: none;
+}
+
+.logo-next-episode {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.logo-full {
+    width: 11rem;
+    transition: opacity 0.2s;
+}
+
+.logo-icon {
+    width: 52px;
+    display: none;
+    transition: opacity 0.2s;
+}
+
+.administration-logo-text {
+    margin: 0;
+    color: var(--sidebar-text-items);
+    align-self: end;
+}
+
+body.sidebar-collapsed .logo-full {
+    display: none;
+}
+
+body.sidebar-collapsed .logo-icon {
+    display: block;
+    margin: auto;
+}
+
+body.sidebar-collapsed .administration-logo-text {
+    display: none;
+}
+
+.sidebar-text {
+    transition: opacity 0.2s;
+}
+
+.sidebar-icon {
+    width: 20px;
+    text-align: center;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+body.sidebar-collapsed .sidebar-icon {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+}
+
+.nav-list-items .nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--sidebar-text-items);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    background-color: var(--sidebar-items);
+    color: white;
+}
+
+.nav-link.active {
+    background-color: var(--sidebar-items);
+    border-right: 3px solid var(--sidebar-items-border);
+}
+
+.side-navbar .nav-list-items .nav-link.active::after,
+.side-navbar .nav-list-items .nav-link:hover::after,
+.side-navbar .nav-list-items .nav-link:focus::after {
+    content: "\F285";
+    position: absolute;
+    translate: -50% -50%;
+    top: 50%;
+    right: 0.3rem;
+    font-family: "bootstrap-icons";
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--sidebar-items-border);
+    color: white;
+}
+
+.show-frontend-website > .nav-link {
+    color: var(--sidebar-text-items);
+}
+
+.show-frontend-website > .nav-link:hover,
+.show-frontend-website > .nav-link:focus {
+    color: var(--background-color);
+    background-color: var(--sidebar-text-items);
+    border: none;
+}
+
+body.sidebar-collapsed .side-navbar .nav-link.active::after,
+body.sidebar-collapsed .side-navbar .nav-link:hover::after {
+    display: none;
+}
+
+.sidebar-toggle button {
+    color: var(--sidebar-text-items);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sidebar-toggle button:hover {
+    background-color: var(--sidebar-items);
+    color: white;
+}
+
+body.sidebar-collapsed .sidebar-toggle button {
+    justify-content: center;
+}

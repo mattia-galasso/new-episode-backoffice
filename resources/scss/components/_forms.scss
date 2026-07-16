@@ -1,0 +1,13 @@
+#poster-placeholder,
+#banner-placeholder,
+#actor-placeholder,
+#platform-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #6b7280;
+    font-weight: 600;
+}

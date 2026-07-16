@@ -1,0 +1,26 @@
+.series-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    transition: 0.2s;
+    color: white;
+    text-decoration: none;
+}
+
+.series-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+}
+
+.edit-btn {
+    background: #6b7280;
+}
+
+.delete-btn {
+    background: #ef4444;
+}
+

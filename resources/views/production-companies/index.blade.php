@@ -41,18 +41,18 @@
 
         @forelse ($productionCompanies as $productionCompany)
 
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-xl-4 d-flex">
 
-            <div class="card create-card production-company-card d-flex flex-row justify-content-between align-items-center"
+            <div class="card create-card production-company-card d-flex flex-row justify-content-between align-items-center flex-fill gap-2"
                 onclick="window.location='{{ route('production-companies.show', $productionCompany) }}'">
 
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-start gap-3 flex-grow-1">
 
                     <span class="production-company-icon">
                         <i class="bi bi-building"></i>
                     </span>
 
-                    <div>
+                    <div class="flex-grow-1">
                         <div class="production-company-name">
                             {{ $productionCompany->name }}
                         </div>

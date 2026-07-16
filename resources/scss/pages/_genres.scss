@@ -1,0 +1,11 @@
+.genre-card {
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.genre-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--sidebar-items-border);
+}

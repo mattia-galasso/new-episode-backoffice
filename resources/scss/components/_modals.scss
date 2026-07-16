@@ -1,0 +1,17 @@
+.modal-content {
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: var(--border-color);
+}
+
+.modal-title {
+    color: white;
+}
+
+.modal-body {
+    color: white;
+}

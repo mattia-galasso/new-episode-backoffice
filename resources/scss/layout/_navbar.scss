@@ -1,0 +1,16 @@
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "\F282";
+    font-family: "bootstrap-icons";
+    border: 0;
+}
+
+.mobile-logo {
+    width: 150px;
+}
+
+.mobile-navbar {
+    border-bottom: 2px solid var(--border-color);
+}
