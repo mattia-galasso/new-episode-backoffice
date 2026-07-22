@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="actor-role">
-                        {{ $actor->birth_date ?? 'Data di nascita non indicata' }}
+                        {{ $actor->birth_date_formatted ?? 'Data di nascita non indicata' }}
                     </div>
 
                 </div>

@@ -8,6 +8,7 @@ class TvSeries extends Model
 {
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'original_language',
         'country',

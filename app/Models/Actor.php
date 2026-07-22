@@ -12,6 +12,13 @@ class Actor extends Model
         'birth_date',
     ];
 
+    public function getBirthDateFormattedAttribute()
+    {
+        return $this->birth_date
+            ? \Carbon\Carbon::parse($this->birth_date)->format('d/m/Y')
+            : null;
+    }
+
     public function tvSeries()
     {
         return $this->belongsToMany(TvSeries::class)->withPivot('role');

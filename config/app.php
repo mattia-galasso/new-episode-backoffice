@@ -17,6 +17,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Frontend URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL defines the base address of the React frontend application.
+    | It can be used throughout the application whenever a link to the
+    | frontend is required. Be sure to update it for each deployment
+    | environment.
+    |
+    */
+
+    'frontend_url' => env('FRONTEND_URL', '#'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

@@ -79,7 +79,7 @@
 
 <ul class="nav nav-pills flex-column gap-1">
     <li class="show-frontend-website nav-item">
-        <a href="/" class="nav-link">
+        <a href="{{ config('app.frontend_url') }}" class="nav-link" target="_blank">
             <span class="sidebar-icon">
                 <i class="bi bi-globe2"></i>
             </span>

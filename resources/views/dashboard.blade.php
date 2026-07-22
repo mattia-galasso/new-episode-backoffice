@@ -9,7 +9,7 @@
     {{-- HEADER --}}
     <div class="d-flex align-items-center gap-2 mb-4">
         <span class="section-icon pe-none me-2">
-            <i class="bi bi-speedometer2"></i>
+            <i class="bi bi-house-door"></i>
         </span>
 
         <div>

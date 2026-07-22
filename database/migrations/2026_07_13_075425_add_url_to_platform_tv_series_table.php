@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('platform_tv_series', function (Blueprint $table) {
-            $table->string('url')->nullable();
+            $table->text('url')->nullable();
         });
     }
 

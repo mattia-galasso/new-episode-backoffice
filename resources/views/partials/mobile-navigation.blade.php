@@ -48,7 +48,7 @@
     </li>
     <hr class="my-3">
     <li class="nav-item">
-        <a href="/" class="nav-link">
+        <a href="{{ config('app.frontend_url') }}" class="nav-link" target="_blank">
             <i class="bi bi-globe2"></i>
             <span>Visualizza sito</span>
         </a>

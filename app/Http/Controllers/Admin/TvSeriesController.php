@@ -18,7 +18,7 @@ class TvSeriesController extends Controller
      */
     public function index()
     {
-        $tvseries = TvSeries::all();
+        $tvseries = TvSeries::orderBy('title')->get();
         return view('tvseries.index', compact('tvseries'));
     }
 

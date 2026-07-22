@@ -65,7 +65,7 @@
                             </span>
 
                             <span class="info-value">
-                                {{ $actor->birth_date ?? 'Non indicata' }}
+                                {{ $actor->birth_date_formatted ?? 'Non indicata' }}
                             </span>
 
                         </div>
