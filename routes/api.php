@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\ActorController;
+use App\Http\Controllers\Api\ActorController;
 use App\Http\Controllers\Api\GenreController;
 use App\Http\Controllers\Api\PlatformController;
 use App\Http\Controllers\Api\TvSeriesController;
@@ -25,3 +25,6 @@ Route::get("/platforms", [PlatformController::class, "index"]);
 
 // Genres
 Route::get("/genres", [GenreController::class, "index"]);
+
+// Actor
+Route::get('/actors/{slug}', [ActorController::class, 'show']);

@@ -82,18 +82,23 @@ class TvSeriesController extends Controller
             $query->where('start_year', '>=', $currentYear);
         }
 
-        //PLATFORMS
+        // PLATFORMS
         if ($request->filled('platforms')) {
             $query->wherehas('platforms', function ($query) use ($request) {
                 $query->whereIn('platforms.id', $request->platforms);
             });
         }
 
-        //GENRES
+        // GENRES
         if ($request->filled('genres')) {
             $query->wherehas('genres', function ($query) use ($request) {
                 $query->whereIn('genres.id', $request->genres);
             });
+        }
+
+        // SEARCH
+        if ($request->filled('search')) {
+            $query->where('title', 'LIKE', $request->search . '%');
         }
 
         $tvseries = $query->paginate(18);
