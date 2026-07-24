@@ -48,13 +48,74 @@ class TvSeriesController extends Controller
         ]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $tvseries = TvSeries::paginate(18);
+
+        $query = TvSeries::query();
+
+        //ORDINAMENTO
+        if ($request->order === 'az') {
+            $query->orderBy("title");
+        }
+
+        if ($request->order === 'za') {
+            $query->orderBy("title", 'desc');
+        }
+
+        if ($request->order === 'recent') {
+            $query->orderBy("start_year", "desc");
+        }
+
+        if ($request->order === 'old') {
+            $query->orderBy("start_year");
+        }
+
+        // STATUS
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        // NEW RELEASES
+        if ($request->newReleases === 'true') {
+            $currentYear = now()->year;
+
+            $query->where('start_year', '>=', $currentYear);
+        }
+
+        //PLATFORMS
+        if ($request->filled('platforms')) {
+            $query->wherehas('platforms', function ($query) use ($request) {
+                $query->whereIn('platforms.id', $request->platforms);
+            });
+        }
+
+        //GENRES
+        if ($request->filled('genres')) {
+            $query->wherehas('genres', function ($query) use ($request) {
+                $query->whereIn('genres.id', $request->genres);
+            });
+        }
+
+        $tvseries = $query->paginate(18);
 
         return response()->json([
             'success' => true,
             'results' => $tvseries
+        ]);
+    }
+
+    public function show(string $slug)
+    {
+        $tvSeries = TvSeries::with([
+            'genres',
+            'platforms',
+            'actors',
+            'productionCompany'
+        ])->where('slug', $slug)->firstOrFail();
+
+        return response()->json([
+            'success' => true,
+            'results' => $tvSeries
         ]);
     }
 }
