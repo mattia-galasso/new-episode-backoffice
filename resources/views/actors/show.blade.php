@@ -143,5 +143,76 @@
             </div>
         </div>
     </div>
+    {{-- DELETE MODAL --}}
+    <div class="modal fade" id="deleteActorModal" tabindex="-1" aria-labelledby="deleteActorModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="deleteActorModalLabel">
+
+                        <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
+                        Elimina Attore
+
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <p>
+                        Vuoi davvero eliminare
+                        <strong>{{ $actor->name }}</strong>?
+                    </p>
+
+                    <div class="alert alert-warning mb-0">
+
+                        <i class="bi bi-info-circle me-2"></i>
+
+                        L'attore verrà
+                        <strong>eliminato definitivamente dal database</strong>.
+
+                        Le associazioni con le serie TV verranno rimosse.
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+
+                        Annulla
+
+                    </button>
+
+                    <form method="POST" action="{{ route('actors.destroy', $actor) }}">
+
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger">
+
+                            <i class="bi bi-trash me-2"></i>
+                            Elimina
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     @endsection
