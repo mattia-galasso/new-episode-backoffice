@@ -46,10 +46,7 @@
     </div>
 
     {{-- FORM --}}
-    <form method="POST"
-        id="actor-form"
-        action="{{ route('actors.store') }}"
-        enctype="multipart/form-data">
+    <form method="POST" id="actor-form" action="{{ route('actors.store') }}" enctype="multipart/form-data">
 
         @csrf
 
@@ -68,12 +65,8 @@
                             Nome e Cognome
                         </label>
 
-                        <input type="text"
-                            name="name"
-                            id="name"
-                            class="form-control"
-                            placeholder="Inserisci nome e cognome"
-                            required>
+                        <input type="text" name="name" id="name" class="form-control"
+                            placeholder="Inserisci nome e cognome" required>
 
                     </div>
 
@@ -83,10 +76,17 @@
                             Data di nascita
                         </label>
 
-                        <input type="date"
-                            name="birth_date"
-                            id="birth_date"
-                            class="form-control">
+                        <input type="date" name="birth_date" id="birth_date" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="biography" class="form-label">
+                            Biografia
+                        </label>
+                        <textarea name="biography" id="biography" class="form-control" rows="8"
+                            placeholder="Inserisci la biografia dell'attore"></textarea>
+
                     </div>
                 </div>
             </div>
@@ -102,11 +102,7 @@
                         Foto attore
                     </label>
 
-                    <input type="file"
-                        name="photo"
-                        id="photo"
-                        class="form-control"
-                        accept="image/*">
+                    <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
 
                     <div class="placeholder-box poster-preview-box">
 
@@ -115,9 +111,7 @@
                             <small>Anteprima foto</small>
                         </div>
 
-                        <img id="actor-preview"
-                            class="media-preview poster-preview d-none"
-                            alt="Anteprima attore">
+                        <img id="actor-preview" class="media-preview poster-preview d-none" alt="Anteprima attore">
 
                     </div>
                 </div>

@@ -9,6 +9,7 @@
             </span>
         </a>
     </li>
+    @can('viewAny', App\Models\TvSeries::class)
     <li class="nav-item">
         <a href="{{ route('tvseries.index') }}" class="nav-link {{ Route::is('tvseries.*') ? 'active' : ''}}"
             aria-current="page">
@@ -20,6 +21,8 @@
             </span>
         </a>
     </li>
+    @endcan
+    @can('viewAny', App\Models\Actor::class)
     <li class="nav-item">
         <a href="{{ route('actors.index') }}" class="nav-link {{ Route::is('actors.*') ? 'active' : ''}}">
             <span class="sidebar-icon pe-none">
@@ -30,6 +33,8 @@
             </span>
         </a>
     </li>
+    @endcan
+    @can('viewAny', App\Models\Genre::class)
     <li class="nav-item">
         <a href="{{ route('genres.index') }}" class="nav-link {{ Route::is('genres.*') ? 'active' : ''}}"
             aria-current="page">
@@ -41,6 +46,8 @@
             </span>
         </a>
     </li>
+    @endcan
+    @can('viewAny', App\Models\Platform::class)
     <li class="nav-item">
         <a href="{{ route('platforms.index') }}" class="nav-link {{ Route::is('platforms.*') ? 'active' : ''}}"
             aria-current="page">
@@ -52,9 +59,11 @@
             </span>
         </a>
     </li>
+    @endcan
+    @can('viewAny', App\Models\ProductionCompany::class)
     <li class="nav-item">
-        <a href="{{ route('production-companies.index') }}" class="nav-link {{ Route::is('production-companies.*') ? 'active' : ''}}"
-            aria-current="page">
+        <a href="{{ route('production-companies.index') }}"
+            class="nav-link {{ Route::is('production-companies.*') ? 'active' : ''}}" aria-current="page">
             <span class="sidebar-icon pe-none">
                 <i class="bi bi-building"></i>
             </span>
@@ -63,10 +72,13 @@
             </span>
         </a>
     </li>
+    @endcan
+    @can('viewAny', App\Models\User::class)
     <hr class="hr-color mt-3 mb-0">
     <p class="m-0 ps-3 fw-bold text-secondary">CONFIGURAZIONE</p>
     <li class="nav-item">
-        <a href="{{ route('users.index') }}" class="nav-link {{ Route::is('users.*') ? 'active' : ''}}" aria-current="page">
+        <a href="{{ route('users.index') }}" class="nav-link {{ Route::is('users.*') ? 'active' : ''}}"
+            aria-current="page">
             <span class="sidebar-icon pe-none">
                 <i class="bi bi-person"></i>
             </span>
@@ -75,6 +87,7 @@
             </span>
         </a>
     </li>
+    @endcan
 </ul>
 
 <ul class="nav nav-pills flex-column gap-1">

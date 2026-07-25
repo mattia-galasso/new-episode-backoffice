@@ -84,6 +84,27 @@
                 </div>
             </div>
         </div>
+        <div class="card show-card mt-3">
+
+            <h5 class="fw-bold mb-3">
+                Biografia
+            </h5>
+
+            @if ($actor->biography)
+
+            <p class="biography-text mb-0">
+                {{ $actor->biography }}
+            </p>
+
+            @else
+
+            <p class="text-secondary mb-0">
+                Nessuna biografia disponibile.
+            </p>
+
+            @endif
+
+        </div>
 
         {{-- TV SERIES --}}
         <div class="card show-card mt-3">

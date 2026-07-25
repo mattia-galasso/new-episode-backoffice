@@ -36,15 +36,11 @@
 
             <div class="create-actions d-flex gap-2 ms-md-auto">
 
-                <button type="reset"
-                    form="actor-form"
-                    class="btn btn-outline-secondary">
+                <button type="reset" form="actor-form" class="btn btn-outline-secondary">
                     Annulla
                 </button>
 
-                <button type="submit"
-                    form="actor-form"
-                    class="btn btn-info">
+                <button type="submit" form="actor-form" class="btn btn-info">
                     Salva modifiche
                 </button>
 
@@ -55,10 +51,7 @@
     </div>
 
     {{-- FORM --}}
-    <form method="POST"
-        id="actor-form"
-        action="{{ route('actors.update', $actor) }}"
-        enctype="multipart/form-data">
+    <form method="POST" id="actor-form" action="{{ route('actors.update', $actor) }}" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -80,13 +73,8 @@
                             Nome e Cognome
                         </label>
 
-                        <input type="text"
-                            name="name"
-                            id="name"
-                            class="form-control"
-                            placeholder="Inserisci nome e cognome"
-                            value="{{ $actor->name }}"
-                            required>
+                        <input type="text" name="name" id="name" class="form-control"
+                            placeholder="Inserisci nome e cognome" value="{{ $actor->name }}" required>
 
                     </div>
 
@@ -96,11 +84,19 @@
                             Data di nascita
                         </label>
 
-                        <input type="date"
-                            name="birth_date"
-                            id="birth_date"
-                            class="form-control"
+                        <input type="date" name="birth_date" id="birth_date" class="form-control"
                             value="{{ $actor->birth_date }}">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="biography" class="form-label">
+                            Biografia
+                        </label>
+
+                        <textarea name="biography" id="biography" class="form-control" rows="8"
+                            placeholder="Inserisci la biografia dell'attore">{{ old('biography', $actor->biography) }}</textarea>
+
                     </div>
                 </div>
             </div>
@@ -118,26 +114,19 @@
                         Foto attore
                     </label>
 
-                    <input type="file"
-                        name="photo"
-                        id="photo"
-                        class="form-control"
-                        accept="image/*">
+                    <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
 
                     <div class="placeholder-box poster-preview-box">
 
-                        <div id="actor-placeholder"
-                            class="{{ $actor->photo ? 'd-none' : '' }}">
+                        <div id="actor-placeholder" class="{{ $actor->photo ? 'd-none' : '' }}">
 
                             <i class="bi bi-person-bounding-box fs-1"></i>
                             <small>Anteprima foto</small>
 
                         </div>
 
-                        <img id="actor-preview"
-                            class="media-preview poster-preview {{ $actor->photo ? '' : 'd-none' }}"
-                            src="{{ $actor->photo ? asset('storage/' . $actor->photo) : '' }}"
-                            alt="{{ $actor->name }}">
+                        <img id="actor-preview" class="media-preview poster-preview {{ $actor->photo ? '' : 'd-none' }}"
+                            src="{{ $actor->photo ? asset('storage/' . $actor->photo) : '' }}" alt="{{ $actor->name }}">
                     </div>
                 </div>
             </div>
