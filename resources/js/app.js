@@ -14,7 +14,6 @@ const body = document.body;
 
 // Faccio un controllo se ci troviamo nel layout App per evitare errori di elementi inesistenti
 if (sidebarToggle && sidebarToggleIcon) {
-    
     // Recupero lo stato della Sidebar dal LocalStorage
     const sidebarState = localStorage.getItem("sidebar");
 
@@ -36,6 +35,10 @@ if (sidebarToggle && sidebarToggleIcon) {
 
     // Se viene cliccato il Button della sidebar
     sidebarToggle.addEventListener("click", function () {
+        if (window.innerWidth < 768) {
+            return;
+        }
+
         // Se è presente la classe la rimuovo o viceversa
         body.classList.toggle("sidebar-collapsed");
 
@@ -91,7 +94,7 @@ function setupImagePreview(inputId, previewId, placeholderId) {
     }
 
     input.addEventListener("change", function () {
-        const file = this.files[0];
+        const file = input.files[0];
 
         if (!file) {
             return;
