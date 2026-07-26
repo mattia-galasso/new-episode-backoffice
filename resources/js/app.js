@@ -8,6 +8,7 @@ import.meta.glob(["../img/**"]);
 import TomSelect from "tom-select";
 import "tom-select/dist/css/tom-select.css";
 
+/* SIDEBAR */
 const sidebarToggle = document.getElementById("sidebar-toggle");
 const sidebarToggleIcon = document.getElementById("sidebar-toggle-icon");
 const body = document.body;
