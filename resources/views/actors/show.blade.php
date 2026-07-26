@@ -86,7 +86,7 @@
         </div>
         <div class="card show-card mt-3">
 
-            <h5 class="fw-bold mb-3">
+            <h5 class="fw-bold mb-1">
                 Biografia
             </h5>
 
