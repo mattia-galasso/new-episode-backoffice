@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ActorController as AdminActorController;
 use App\Http\Controllers\Api\ActorController;
 use App\Http\Controllers\Api\GenreController;
 use App\Http\Controllers\Api\PlatformController;
@@ -11,7 +12,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('actors/search', [ActorController::class, 'search']);
+Route::get('actors/search', [AdminActorController::class, 'search']);
 
 // Homepage
 Route::get('tvseries/homepage', [TvSeriesController::class, 'homepage']);
